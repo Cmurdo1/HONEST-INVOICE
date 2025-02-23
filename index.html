@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honest Invoice</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+  
+  <!-- Initialize Firebase -->
+  <script src="firebase.config.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <div id="servicesTab" class="services-tab">
+    <div class="tab-button" onclick="toggleServicesTab()">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
+      <span>Services Library</span>
+    </div>
+    <div class="tab-content">
+      <h2>Service Templates</h2>
+      <div class="category-list" id="categoryList">
+        <!-- Categories will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="form-container">
+      <h1>Honest Invoice</h1>
+      
+      <form id="invoiceForm">
+        <div class="form-section">
+          <h2>From</h2>
+          <input type="text" id="fromName" placeholder="Your Business Name" value="John Smith Auto Repair" required>
+          <textarea id="fromAddress" placeholder="Your Business Address" required>123 Main Street, Anytown, ST 12345</textarea>
+          <input type="tel" id="fromPhone" placeholder="Your Phone Number" value="(555) 123-4567" required>
+          <input type="email" id="fromEmail" placeholder="Your Email" value="john@smithauto.com" required>
+        </div>
+
+        <div class="form-section">
+          <h2>Customer Information</h2>
+          <input type="text" id="customerName" placeholder="Customer Name" value="Alice Johnson" required>
+          <textarea id="customerAddress" placeholder="Customer Address" required>456 Oak Avenue, Somewhere, ST 12345</textarea>
+          <input type="tel" id="customerPhone" placeholder="Customer Phone" value="(555) 987-6543" required>
+          <input type="email" id="customerEmail" placeholder="Customer Email" value="alice@email.com" required>
+        </div>
+
+        <div class="form-section">
+          <h2>Service Details</h2>
+          <input type="text" id="vehicleInfo" placeholder="Service Description" required>
+          <div class="hours-input">
+            <label>Primary Hours: <input type="number" id="pitmanHours" step="0.5" min="0" required></label>
+            <label>Additional Hours: <input type="number" id="idlerHours" step="0.5" min="0" required></label>
+          </div>
+          <div class="rate-input">
+            <label>Hourly Rate: $<input type="number" id="hourlyRate" step="0.01" min="0" required></label>
+            <label>Sales Tax Rate: <input type="number" id="salesTaxRate" step="0.001" min="0" max="1" value="0.08"></label>
+          </div>
+        </div>
+
+        <button type="submit">Generate Invoice</button>
+      </form>
+    </div>
+
+    <div class="preview-container" id="invoicePreview">
+      <!-- Invoice preview will be inserted here -->
+    </div>
+
+    <div class="actions" id="invoiceActions" style="display: none;">
+      <button id="downloadPDF">Download PDF</button>
+      <button id="sendEmail">Send to Customer</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+# Honest Invoice Data Connection Configuration
+
+# Firebase Configuration
+# Client-side SDK Configuration
+firebase:
+  apiKey: "AIzaSyCmhuZ2lYc5R-D6R50CEHzVYvW8FfSvXIA"
+  authDomain: "honestinvoice.firebaseapp.com"
+  projectId: "honestinvoice"
+  storageBucket: "honestinvoice.firebasestorage.app"
+  messagingSenderId: "178273808417"
+  appId: "1:178273808417:web:22107f88dd5a600ab6b360"
+  measurementId: "G-L2LKET70TW"
+
+# Application Settings
+app:
+  name: "Honest Invoice"
+  environment: "production"
+  version: "1.0.0"
+
+# Database Settings
+database:
+  type: "firestore"
+  collections:
+    - name: "invoices"
+      permissions: "read,write"
+    - name: "users"
+      permissions: "read,write"
+    - name: "settings"
+      permissions: "read"
+
+# Analytics Configuration
+analytics:
+  enabled: true
+  provider: "firebase"
+
+# Firebase Admin SDK Configuration
+admin_sdk:
+  service_account:
+    email: "firebase-adminsdk-fbsvc@honestinvoice.iam.gserviceaccount.com"
+    credentials_path: "path/to/serviceAccountKey.json"
+  initialization:
+    type: "admin"
+    auth_type: "service_account"
+    use_credentials_file: true
+
+# Security Settings
+security:
+  authentication: true
+  rules_version: "2"
+  allowed_origins:
+    - "https://honestinvoice.firebaseapp.com"
+    - "http://localhost:3000"
+    - "http://honestinvoice.com"
+    - "https://honestinvoice.com"
+    - "www.honestinvoice.com"
+    - "https://www.honestinvoice.com"
